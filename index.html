@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ThaiDriverService.com — Private drivers & airport transfers in Thailand</title>
+<meta name="description" content="Book a private car with an English-speaking driver in Thailand. Airport transfers from Suvarnabhumi, Don Mueang and U-Tapao to Pattaya, Bangkok, Hua Hin and more. Fixed prices, tolls included, flight tracking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-row">
+    <a class="logo" href="#top" aria-label="ThaiDriverService.com home">
+      <span class="logo-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0F1C2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14l-1.5-6.5A2 2 0 0 0 15.6 9H8.4a2 2 0 0 0-1.9 1.5Z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></svg></span>
+      <span>ThaiDriverService<span class="accent">.com</span></span>
+    </a>
+    <nav aria-label="Main" class="nav-links">
+      <a href="#routes">Airport transfers</a>
+      <a href="#hourly">Hourly &amp; day trips</a>
+      <a href="#fleet">Fleet</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-accent" href="#book">Book a driver</a>
+  </div>
+</header>
+
+<main id="top">
+<section id="book" class="hero">
+  <div class="wrap hero-row">
+    <div class="hero-copy">
+      <p class="eyebrow">Private drivers · Bangkok · Pattaya · Phuket · Chiang Mai</p>
+      <h1>Your driver is waiting at arrivals. The price is already fixed.</h1>
+      <p class="lede">Book a private car with an English-speaking local driver. We track your flight, hold a sign with your name, and include tolls and fuel in one price — no haggling, no meter.</p>
+      <ul class="checks">
+        <li>Flight tracked, 60 min free waiting after landing</li>
+        <li>Free cancellation up to 24 hours before pickup</li>
+        <li>Chat with your driver on WhatsApp or LINE</li>
+      </ul>
+    </div>
+
+    <form class="card booking" id="booking" novalidate>
+      <div class="tabs" role="tablist" aria-label="Trip type">
+        <button type="button" role="tab" data-mode="oneway" aria-selected="true">One way</button>
+        <button type="button" role="tab" data-mode="return" aria-selected="false">Return</button>
+        <button type="button" role="tab" data-mode="hourly" aria-selected="false">By the hour</button>
+      </div>
+
+      <div class="field transfer-only">
+        <label for="route">Route</label>
+        <select id="route"></select>
+        <span class="hint" id="routeTime"></span>
+      </div>
+
+      <div class="field hourly-only" hidden>
+        <label for="city">Start city</label>
+        <select id="city">
+          <option>Bangkok</option><option>Pattaya</option><option>Phuket</option><option>Chiang Mai</option><option>Hua Hin</option>
+        </select>
+      </div>
+      <div class="field hourly-only" hidden>
+        <label for="hours">Hours (minimum 4)</label>
+        <div class="stepper">
+          <button type="button" id="lessHours" aria-label="Fewer hours">−</button>
+          <output id="hours">6 hours</output>
+          <button type="button" id="moreHours" aria-label="More hours">+</button>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="field"><label for="date">Pickup date</label><input id="date" type="date" required></div>
+        <div class="field"><label for="time">Time / landing</label><input id="time" type="time" required></div>
+      </div>
+      <div class="field"><label for="pickup">Pickup address or flight number</label><input id="pickup" type="text" placeholder="e.g. TG 661, or your hotel"></div>
+      <div class="field"><label for="dropoff">Drop-off hotel / address</label><input id="dropoff" type="text" placeholder="Hotel name or address"></div>
+
+      <fieldset class="field">
+        <legend>Vehicle</legend>
+        <div class="vehicles" id="vehicles"></div>
+      </fieldset>
+
+      <div class="grid2">
+        <div class="field"><label for="name">Your name (for the sign)</label><input id="name" type="text" required autocomplete="name"></div>
+        <div class="field"><label for="pax">Passengers</label><input id="pax" type="number" min="1" max="12" value="2"></div>
+      </div>
+
+      <div class="total-row">
+        <div>
+          <div class="hint" id="totalCaption">One way, per car</div>
+          <div class="total" id="total">฿0</div>
+          <div class="hint">Tolls, fuel and airport parking included</div>
+        </div>
+        <button type="submit" class="btn btn-dark btn-lg">Book on WhatsApp</button>
+      </div>
+      <p class="fine">Pay the driver in cash (THB) at the end of the ride, by Thai QR payment, or by bank transfer. Card payments coming soon.</p>
+      <p class="fine">Prefer LINE? <a id="lineLink" href="#">Send the same request on LINE</a>.</p>
+    </form>
+  </div>
+</section>
+
+<section class="section" aria-label="Why book with us">
+  <div class="wrap features">
+    <div class="feature"><h3>Flight tracking</h3><p>Flight delayed? Your pickup moves with it. Waiting time starts when you land, not when you booked.</p></div>
+    <div class="feature"><h3>Meet &amp; greet</h3><p>Your driver holds a sign with your name in the arrivals hall and helps with bags. You get their photo and number before you fly.</p></div>
+    <div class="feature"><h3>One fixed price</h3><p>Tolls, fuel and parking are in the quote. No meter arguments, no surprise "highway fee" at the end.</p></div>
+    <div class="feature"><h3>Vetted local drivers</h3><p>Licensed, insured, English-speaking. Child seats on request. Ask for a female driver and we'll do our best.</p></div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="how">
+  <div class="wrap">
+    <h2 id="how">How it works</h2>
+    <ol class="steps">
+      <li><strong>Pick route &amp; car.</strong> See the full price instantly and send your request.</li>
+      <li><strong>Get your driver's details.</strong> Name, photo, car plate and WhatsApp / LINE arrive the day before.</li>
+      <li><strong>Walk out, get in.</strong> Find your name on the sign at arrivals. Cold water is in the car.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="routes" class="section alt" aria-labelledby="routes-h">
+  <div class="wrap">
+    <div class="section-head"><h2 id="routes-h">Popular routes</h2><p class="muted">Sedan price shown · one way · per car, not per person</p></div>
+    <div class="routes" id="routeCards"></div>
+  </div>
+</section>
+
+<section id="hourly" class="section" aria-labelledby="hourly-h">
+  <div class="wrap split">
+    <div>
+      <h2 id="hourly-h">A driver for the day</h2>
+      <p class="muted big">Hire a car and driver by the hour. Shopping, temples, golf, client meetings, or a long drive with stops on the way — one booking covers it.</p>
+      <a class="btn btn-dark" href="#book" id="goHourly">Price an hourly booking</a>
+    </div>
+    <div class="ideas">
+      <div><strong>Pattaya → Bangkok with a stop</strong><span>A floating market or outlet mall on the way</span></div>
+      <div><strong>Ayutthaya day trip</strong><span>From Bangkok, temples at your own pace</span></div>
+      <div><strong>Business day in Bangkok</strong><span>Car waits outside between meetings</span></div>
+      <div><strong>Chiang Mai mountains</strong><span>Doi Suthep and the old city in one day</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="fleet" class="section alt" aria-labelledby="fleet-h">
+  <div class="wrap">
+    <h2 id="fleet-h">The cars</h2>
+    <div class="fleet" id="fleetCards"></div>
+  </div>
+</section>
+
+<section id="faq" class="section" aria-labelledby="faq-h">
+  <div class="wrap narrow">
+    <h2 id="faq-h">Questions</h2>
+    <details><summary>What if my flight is late?</summary><p>We track your flight number. The driver adjusts to the real landing time, and you get 60 minutes of free waiting from touchdown.</p></details>
+    <details><summary>Where do I meet the driver at Suvarnabhumi?</summary><p>[Exact meeting point] — your driver also messages you on landing with where they're standing.</p></details>
+    <details><summary>Is the price per person?</summary><p>No. It's per car, for your group only. Tolls, fuel and parking are included.</p></details>
+    <details><summary>How do I pay?</summary><p>Yes. Pay the driver in Thai baht at the end of the ride, scan a Thai QR code, or pay by bank transfer. Card payments are coming soon.</p></details>
+    <details><summary>Can I cancel?</summary><p>Free cancellation up to 24 hours before pickup.</p></details>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-row">
+    <div><div class="logo-text">ThaiDriverService.com</div>Private drivers across Thailand</div>
+    <div class="contact"><strong>24/7 help</strong><a id="waFooter" href="#">WhatsApp</a><a id="lineFooter" href="#">LINE</a></div>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
