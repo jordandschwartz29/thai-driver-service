@@ -88,3 +88,4 @@ details p{margin:10px 0 0;color:var(--muted)}
 .logo-text{color:#fff;font-weight:700;font-size:18px;margin-bottom:6px}
 .contact{display:flex;flex-direction:column;gap:6px}.contact strong{color:#fff}.contact a{color:#C9D2DE}
 @media (max-width:520px){.vehicles{grid-template-columns:1fr}.ideas{grid-template-columns:1fr}.nav-links{gap:14px}}
+.tag{display:inline-block;vertical-align:middle;margin-left:8px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;background:var(--ink);color:var(--accent);padding:3px 8px;border-radius:999px}

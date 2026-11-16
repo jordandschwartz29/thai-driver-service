@@ -1,7 +1,7 @@
 (function () {
   const C = window.TDS_CONFIG;
   const $ = (id) => document.getElementById(id);
-  const fmt = (n) => "฿" + Math.round(n).toLocaleString("en-US");
+  const fmt = (n) => (n == null ? "Quote" : "฿" + Math.round(n).toLocaleString("en-US"));
   const state = { mode: "oneway", routeId: C.routes[0].id, vehicle: "sedan", hours: 6 };
 
   // Route select + cards
@@ -11,18 +11,19 @@
       <span class="muted small">${r.from}</span>
       <span class="route-to">→ ${r.to}</span>
       <span class="muted small">About ${r.time}</span>
-      <span class="route-price">from ${fmt(r.price.sedan)}</span>
+      <span class="route-price">from ${fmt(r.price.eco)}</span>
     </button>`).join("");
   $("fleetCards").innerHTML = C.vehicles.map((v) => `
     <div class="fleet-card">
       <div class="photo">[Photo: ${v.model}]</div>
-      <div class="fleet-body"><h3>${v.name}</h3><p class="muted small">${v.model}</p><p>${v.capLong}</p></div>
+      <div class="fleet-body"><h3>${v.name}${v.luxury ? ' <span class="tag">Chauffeur</span>' : ""}</h3><p class="muted small">${v.model}</p><p>${v.capLong}</p></div>
     </div>`).join("");
 
   const route = () => C.routes.find((r) => r.id === state.routeId);
   const priceFor = (v) => {
-    if (state.mode === "hourly") return C.hourly[v] * state.hours;
+    if (state.mode === "hourly") return C.hourly[v] == null ? null : C.hourly[v] * state.hours;
     const one = route().price[v];
+    if (one == null) return null;
     return state.mode === "return" ? one * 2 * (1 - C.returnDiscount) : one;
   };
 
@@ -38,7 +39,8 @@
       <button type="button" class="vehicle" data-vehicle="${v.id}" aria-pressed="${state.vehicle === v.id}">
         <strong>${v.name}</strong><span>${v.cap}</span><b>${fmt(priceFor(v.id))}</b>
       </button>`).join("");
-    $("total").textContent = fmt(priceFor(state.vehicle));
+    const t = priceFor(state.vehicle);
+    $("total").textContent = t == null ? "Get a quote" : fmt(t);
     $("totalCaption").textContent = hourly ? `Total for ${state.hours} hours` : state.mode === "return" ? `Return trip (${C.returnDiscount * 100}% off)` : "One way, per car";
   }
 
@@ -67,7 +69,7 @@
       "Drop-off: " + ($("dropoff").value || "-"),
       "Passengers: " + $("pax").value,
       "Name: " + ($("name").value || "-"),
-      "Quoted price: " + fmt(priceFor(state.vehicle))
+      "Quoted price: " + (priceFor(state.vehicle) == null ? "please quote" : fmt(priceFor(state.vehicle)))
     ].join("\n");
   }
 
