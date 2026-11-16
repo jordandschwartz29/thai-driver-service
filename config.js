@@ -27,21 +27,21 @@ window.TDS_CONFIG = {
 
   //               eco    sedan  suv    van    alph   eclass sclass  mini  coach
   routes: [
-    { id: "bkk-city", from: "Suvarnabhumi Airport (BKK)", to: "Bangkok city", time: "45 min",     price: { eco: 600,  sedan: 800,  suv: 1000, van: 1100, alph: 2300, eclass: 2300, sclass: 3200,  mini: null, coach: null } },
-    { id: "dmk-city", from: "Don Mueang Airport (DMK)",   to: "Bangkok city", time: "40 min",     price: { eco: 600,  sedan: 800,  suv: 1000, van: 1100, alph: 2300, eclass: 2300, sclass: 3200,  mini: null, coach: null } },
-    { id: "bkk-pty",  from: "Suvarnabhumi Airport (BKK)", to: "Pattaya",      time: "1 h 45 min", price: { eco: 1000, sedan: 1300, suv: 1500, van: 1700, alph: 3800, eclass: 3800, sclass: 5500,  mini: null, coach: null } },
-    { id: "dmk-pty",  from: "Don Mueang Airport (DMK)",   to: "Pattaya",      time: "2 h 15 min", price: { eco: 1300, sedan: 1500, suv: 1700, van: 2000, alph: 4200, eclass: 4200, sclass: 6000,  mini: null, coach: null } },
-    { id: "utp-pty",  from: "U-Tapao Airport (UTP)",      to: "Pattaya",      time: "45 min",     price: { eco: 800,  sedan: 900,  suv: 1000, van: 1200, alph: 2500, eclass: 2500, sclass: 3500,  mini: null, coach: null } },
-    { id: "pty-bkk",  from: "Pattaya",                    to: "Bangkok city", time: "2 h",        price: { eco: 1200, sedan: 1400, suv: 1600, van: 1900, alph: 4000, eclass: 4000, sclass: 5800,  mini: null, coach: null } },
-    { id: "bkk-hh",   from: "Suvarnabhumi Airport (BKK)", to: "Hua Hin",      time: "3 h",        price: { eco: 2300, sedan: 2600, suv: 2900, van: 3300, alph: 6000, eclass: 6000, sclass: 8500,  mini: null, coach: null } },
-    { id: "pty-hh",   from: "Pattaya",                    to: "Hua Hin",      time: "4 h",        price: { eco: 3000, sedan: 3400, suv: 3800, van: 4300, alph: 7500, eclass: 7500, sclass: 10500, mini: null, coach: null } },
-    { id: "hkt-pat",  from: "Phuket Airport (HKT)",       to: "Patong Beach", time: "50 min",     price: { eco: 700,  sedan: 800,  suv: 900,  van: 1000, alph: 2200, eclass: 2200, sclass: 3200,  mini: null, coach: null } },
-    { id: "kbv-aon",  from: "Krabi Airport (KBV)",        to: "Ao Nang",      time: "40 min",     price: { eco: 600,  sedan: 700,  suv: 850,  van: 1000, alph: 2000, eclass: 2000, sclass: 3000,  mini: null, coach: null } },
-    { id: "cnx-old",  from: "Chiang Mai Airport (CNX)",   to: "Old City",     time: "15 min",     price: { eco: 250,  sedan: 350,  suv: 450,  van: 600,  alph: 1500, eclass: 1500, sclass: 2500,  mini: null, coach: null } }
+    { id: "bkk-city", from: "Suvarnabhumi Airport (BKK)", to: "Bangkok city", time: "45 min",     price: { eco: 720,  sedan: 960,  suv: 1200, van: 1320, alph: 2760, eclass: 2760, sclass: 3840,  mini: null, coach: null } },
+    { id: "dmk-city", from: "Don Mueang Airport (DMK)",   to: "Bangkok city", time: "40 min",     price: { eco: 720,  sedan: 960,  suv: 1200, van: 1320, alph: 2760, eclass: 2760, sclass: 3840,  mini: null, coach: null } },
+    { id: "bkk-pty",  from: "Suvarnabhumi Airport (BKK)", to: "Pattaya",      time: "1 h 45 min", price: { eco: 1200, sedan: 1560, suv: 1800, van: 2040, alph: 4560, eclass: 4560, sclass: 6600,  mini: null, coach: null } },
+    { id: "dmk-pty",  from: "Don Mueang Airport (DMK)",   to: "Pattaya",      time: "2 h 15 min", price: { eco: 1560, sedan: 1800, suv: 2040, van: 2400, alph: 5040, eclass: 5040, sclass: 7200,  mini: null, coach: null } },
+    { id: "utp-pty",  from: "U-Tapao Airport (UTP)",      to: "Pattaya",      time: "45 min",     price: { eco: 960,  sedan: 1080,  suv: 1200, van: 1440, alph: 3000, eclass: 3000, sclass: 4200,  mini: null, coach: null } },
+    { id: "pty-bkk",  from: "Pattaya",                    to: "Bangkok city", time: "2 h",        price: { eco: 1440, sedan: 1680, suv: 1920, van: 2280, alph: 4800, eclass: 4800, sclass: 6960,  mini: null, coach: null } },
+    { id: "bkk-hh",   from: "Suvarnabhumi Airport (BKK)", to: "Hua Hin",      time: "3 h",        price: { eco: 2760, sedan: 3120, suv: 3480, van: 3960, alph: 7200, eclass: 7200, sclass: 10200,  mini: null, coach: null } },
+    { id: "pty-hh",   from: "Pattaya",                    to: "Hua Hin",      time: "4 h",        price: { eco: 3600, sedan: 4080, suv: 4560, van: 5160, alph: 9000, eclass: 9000, sclass: 12600, mini: null, coach: null } },
+    { id: "hkt-pat",  from: "Phuket Airport (HKT)",       to: "Patong Beach", time: "50 min",     price: { eco: 840,  sedan: 960,  suv: 1080,  van: 1200, alph: 2640, eclass: 2640, sclass: 3840,  mini: null, coach: null } },
+    { id: "kbv-aon",  from: "Krabi Airport (KBV)",        to: "Ao Nang",      time: "40 min",     price: { eco: 720,  sedan: 840,  suv: 1020,  van: 1200, alph: 2400, eclass: 2400, sclass: 3600,  mini: null, coach: null } },
+    { id: "cnx-old",  from: "Chiang Mai Airport (CNX)",   to: "Old City",     time: "15 min",     price: { eco: 300,  sedan: 420,  suv: 540,  van: 720,  alph: 1800, eclass: 1800, sclass: 3000,  mini: null, coach: null } }
   ],
 
   // Per hour, minimum 4 hours
-  hourly: { eco: 300, sedan: 330, suv: 380, van: 400, alph: 900, eclass: 900, sclass: 1300, mini: null, coach: null },
+  hourly: { eco: 360, sedan: 400, suv: 460, van: 480, alph: 1080, eclass: 1080, sclass: 1560, mini: null, coach: null },
   minHours: 4,
   maxHours: 12,
   returnDiscount: 0.05   // 5% off return trips
