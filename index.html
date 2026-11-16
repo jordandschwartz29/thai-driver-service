@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
 
@@ -19,12 +19,28 @@
       <span>ThaiDriverService<span class="accent">.com</span></span>
     </a>
     <nav aria-label="Main" class="nav-links">
-      <a href="#routes">Airport transfers</a>
-      <a href="#hourly">Hourly &amp; day trips</a>
-      <a href="#fleet">Fleet</a>
-      <a href="#faq">FAQ</a>
+      <a href="#routes" data-i18n="nav.transfers">Airport transfers</a>
+      <a href="#hourly" data-i18n="nav.hourly">Hourly &amp; day trips</a>
+      <a href="#fleet" data-i18n="nav.fleet">Fleet</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
     </nav>
-    <a class="btn btn-accent" href="#book">Book a driver</a>
+    <div class="nav-actions">
+      <label class="lang">
+        <span class="sr-only" data-i18n="nav.lang">Language</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+        <select id="lang">
+          <option value="en">English</option>
+          <option value="th">ไทย</option>
+          <option value="de">Deutsch</option>
+          <option value="fr">Français</option>
+          <option value="nl">Nederlands</option>
+          <option value="no">Norsk</option>
+          <option value="ja">日本語</option>
+          <option value="zh">中文</option>
+        </select>
+      </label>
+      <a class="btn btn-accent" href="#book" data-i18n="nav.book">Book a driver</a>
+    </div>
   </div>
 </header>
 
@@ -32,99 +48,101 @@
 <section id="book" class="hero">
   <div class="wrap hero-row">
     <div class="hero-copy">
-      <p class="eyebrow">Private drivers · Bangkok · Pattaya · Hua Hin · Phuket · Krabi · Chiang Mai</p>
-      <h1>Your driver is waiting at arrivals. The price is already fixed.</h1>
-      <p class="lede">Book a private car with an English-speaking local driver. We track your flight, hold a sign with your name, and include tolls and fuel in one price — no haggling, no meter.</p>
+      <p class="eyebrow" data-i18n="hero.eyebrow">Private drivers · Bangkok · Pattaya · Hua Hin · Phuket · Krabi · Chiang Mai</p>
+      <h1 data-i18n="hero.title">Your driver is waiting at arrivals. The price is already fixed.</h1>
+      <p class="lede" data-i18n="hero.lede">Book a private car with an English-speaking local driver. We track your flight, hold a sign with your name, and include tolls and fuel in one price — no haggling, no meter.</p>
       <ul class="checks">
-        <li>Flight tracked, 60 min free waiting after landing</li>
-        <li>Free cancellation up to 24 hours before pickup</li>
-        <li>Chat with your driver on WhatsApp or LINE</li>
+        <li data-i18n="hero.c1">Flight tracked, 60 min free waiting after landing</li>
+        <li data-i18n="hero.c2">Free cancellation up to 24 hours before pickup</li>
+        <li data-i18n="hero.c3">Chat with your driver on WhatsApp or LINE</li>
       </ul>
     </div>
 
     <form class="card booking" id="booking" novalidate>
       <div class="tabs" role="tablist" aria-label="Trip type">
-        <button type="button" role="tab" data-mode="oneway" aria-selected="true">One way</button>
-        <button type="button" role="tab" data-mode="return" aria-selected="false">Return</button>
-        <button type="button" role="tab" data-mode="hourly" aria-selected="false">By the hour</button>
+        <button type="button" role="tab" data-mode="oneway" aria-selected="true" data-i18n="tab.oneway">One way</button>
+        <button type="button" role="tab" data-mode="return" aria-selected="false" data-i18n="tab.return">Return</button>
+        <button type="button" role="tab" data-mode="hourly" aria-selected="false" data-i18n="tab.hourly">By the hour</button>
       </div>
 
       <div class="field transfer-only">
-        <label for="route">Route</label>
+        <label for="route" data-i18n="f.route">Route</label>
         <select id="route"></select>
         <span class="hint" id="routeTime"></span>
       </div>
 
       <div class="field hourly-only" hidden>
-        <label for="city">Start city</label>
+        <label for="city" data-i18n="f.city">Start city</label>
         <select id="city">
           <option>Bangkok</option><option>Pattaya</option><option>Phuket</option><option>Chiang Mai</option><option>Hua Hin</option><option>Krabi</option>
         </select>
       </div>
       <div class="field hourly-only" hidden>
-        <label for="hours">Hours (minimum 4)</label>
+        <label for="hours" data-i18n="f.hours">Hours (minimum 4)</label>
         <div class="stepper">
-          <button type="button" id="lessHours" aria-label="Fewer hours">−</button>
-          <output id="hours">6 hours</output>
-          <button type="button" id="moreHours" aria-label="More hours">+</button>
+          <button type="button" id="lessHours" aria-label="−">−</button>
+          <output id="hours"></output>
+          <button type="button" id="moreHours" aria-label="+">+</button>
         </div>
       </div>
 
       <div class="grid2">
-        <div class="field"><label for="date">Pickup date</label><input id="date" type="date" required></div>
-        <div class="field"><label for="time">Time / landing</label><input id="time" type="time" required></div>
+        <div class="field"><label for="date" data-i18n="f.date">Pickup date</label><input id="date" type="date" required></div>
+        <div class="field"><label for="time" data-i18n="f.time">Time / landing</label><input id="time" type="time" required></div>
       </div>
-      <div class="field"><label for="pickup">Pickup address or flight number</label><input id="pickup" type="text" placeholder="e.g. TG 661, or your hotel"></div>
-      <div class="field"><label for="dropoff">Drop-off hotel / address</label><input id="dropoff" type="text" placeholder="Hotel name or address"></div>
+      <div class="field"><label for="pickup" data-i18n="f.pickup">Pickup address or flight number</label><input id="pickup" type="text" data-i18n-ph="ph.pickup" placeholder="e.g. TG 661, or your hotel"></div>
+      <div class="field"><label for="dropoff" data-i18n="f.dropoff">Drop-off hotel / address</label><input id="dropoff" type="text" data-i18n-ph="ph.dropoff" placeholder="Hotel name or address"></div>
 
       <fieldset class="field">
-        <legend>Vehicle</legend>
+        <legend data-i18n="f.vehicle">Vehicle</legend>
         <div class="vehicles" id="vehicles"></div>
       </fieldset>
 
       <div class="grid2">
-        <div class="field"><label for="name">Your name (for the sign)</label><input id="name" type="text" required autocomplete="name"></div>
-        <div class="field"><label for="pax">Passengers</label><input id="pax" type="number" min="1" max="12" value="2"></div>
+        <div class="field"><label for="name" data-i18n="f.name">Your name (for the sign)</label><input id="name" type="text" required autocomplete="name"></div>
+        <div class="field"><label for="pax" data-i18n="f.pax">Passengers</label><input id="pax" type="number" min="1" max="40" value="2"></div>
       </div>
 
       <div class="total-row">
         <div>
-          <div class="hint" id="totalCaption">One way, per car</div>
+          <div class="hint" id="totalCaption"></div>
           <div class="total" id="total">฿0</div>
-          <div class="hint">Tolls, fuel and airport parking included</div>
+          <div class="hint" data-i18n="f.included">Tolls, fuel and airport parking included</div>
         </div>
-        <button type="submit" class="btn btn-dark btn-lg">Book on WhatsApp</button>
+        <button type="submit" class="btn btn-dark btn-lg" data-i18n="f.submit">Book on WhatsApp</button>
       </div>
-      <p class="fine">Pay the driver in cash (THB) at the end of the ride, by Thai QR payment, or by bank transfer. Card payments coming soon.</p>
-      <p class="fine">Prefer LINE? <a id="lineLink" href="#">Send the same request on LINE</a>.</p>
+      <p class="fine" data-i18n="f.pay">Pay the driver in cash (THB) at the end of the ride, by Thai QR payment, or by bank transfer. Card payments coming soon.</p>
+      <p class="fine"><span data-i18n="f.email">Prefer email?</span> <a id="emailLink" href="#" data-i18n="f.emailLink">Send the same request by email</a></p>
+      <p class="fine"><span data-i18n="f.line">Prefer LINE?</span> <a id="lineLink" href="#" data-i18n="f.lineLink">Send the same request on LINE</a></p>
+      <p class="fine line-note" id="lineNote" role="status" hidden></p>
     </form>
   </div>
 </section>
 
 <section class="section" aria-label="Why book with us">
   <div class="wrap features">
-    <div class="feature"><h3>Flight tracking</h3><p>Flight delayed? Your pickup moves with it. Waiting time starts when you land, not when you booked.</p></div>
-    <div class="feature"><h3>Meet &amp; greet</h3><p>Your driver holds a sign with your name in the arrivals hall and helps with bags. You get their photo and number before you fly.</p></div>
-    <div class="feature"><h3>One fixed price</h3><p>Tolls, fuel and parking are in the quote. No meter arguments, no surprise "highway fee" at the end.</p></div>
-    <div class="feature"><h3>Luxury chauffeurs</h3><p>Mercedes E-Class, S-Class and Toyota Alphard with a suited chauffeur for business, weddings and VIP arrivals.</p></div>
-    <div class="feature"><h3>Vetted local drivers</h3><p>Licensed, insured, English-speaking. Child seats on request. Ask for a female driver and we'll do our best.</p></div>
+    <div class="feature"><h3 data-i18n="ft.1t">Flight tracking</h3><p data-i18n="ft.1d">Flight delayed? Your pickup moves with it. Waiting time starts when you land, not when you booked.</p></div>
+    <div class="feature"><h3 data-i18n="ft.2t">Meet &amp; greet</h3><p data-i18n="ft.2d">Your driver holds a sign with your name in the arrivals hall and helps with bags. You get their photo and number before you fly.</p></div>
+    <div class="feature"><h3 data-i18n="ft.3t">One fixed price</h3><p data-i18n="ft.3d">Tolls, fuel and parking are in the quote. No meter arguments, no surprise "highway fee" at the end.</p></div>
+    <div class="feature"><h3 data-i18n="ft.4t">Luxury chauffeurs</h3><p data-i18n="ft.4d">Mercedes E-Class, S-Class and Toyota Alphard with a suited chauffeur for business, weddings and VIP arrivals.</p></div>
+    <div class="feature"><h3 data-i18n="ft.5t">Vetted local drivers</h3><p data-i18n="ft.5d">Licensed, insured, English-speaking. Child seats on request. Ask for a female driver and we'll do our best.</p></div>
   </div>
 </section>
 
 <section class="section" aria-labelledby="how">
   <div class="wrap">
-    <h2 id="how">How it works</h2>
+    <h2 id="how" data-i18n="how.t">How it works</h2>
     <ol class="steps">
-      <li><strong>Pick route &amp; car.</strong> See the full price instantly and send your request.</li>
-      <li><strong>Get your driver's details.</strong> Name, photo, car plate and WhatsApp / LINE arrive the day before.</li>
-      <li><strong>Walk out, get in.</strong> Find your name on the sign at arrivals. Cold water is in the car.</li>
+      <li><strong data-i18n="how.1t">Pick route &amp; car.</strong> <span data-i18n="how.1d">See the full price instantly and send your request.</span></li>
+      <li><strong data-i18n="how.2t">Get your driver's details.</strong> <span data-i18n="how.2d">Name, photo, car plate and WhatsApp / LINE arrive the day before.</span></li>
+      <li><strong data-i18n="how.3t">Walk out, get in.</strong> <span data-i18n="how.3d">Find your name on the sign at arrivals. Cold water is in the car.</span></li>
     </ol>
   </div>
 </section>
 
 <section id="routes" class="section alt" aria-labelledby="routes-h">
   <div class="wrap">
-    <div class="section-head"><h2 id="routes-h">Popular routes</h2><p class="muted">Economy price shown · one way · per car, not per person</p></div>
+    <div class="section-head"><h2 id="routes-h" data-i18n="rt.t">Popular routes</h2><p class="muted" data-i18n="rt.note">Economy price shown · one way · per car, not per person</p></div>
     <div class="routes" id="routeCards"></div>
   </div>
 </section>
@@ -132,47 +150,58 @@
 <section id="hourly" class="section" aria-labelledby="hourly-h">
   <div class="wrap split">
     <div>
-      <h2 id="hourly-h">A driver for the day</h2>
-      <p class="muted big">Hire a car and driver by the hour. Shopping, temples, golf, client meetings, or a long drive with stops on the way — one booking covers it.</p>
-      <a class="btn btn-dark" href="#book" id="goHourly">Price an hourly booking</a>
+      <h2 id="hourly-h" data-i18n="hr.t">A driver for the day</h2>
+      <p class="muted big" data-i18n="hr.d">Hire a car and driver by the hour. Shopping, temples, golf, client meetings, or a long drive with stops on the way — one booking covers it.</p>
+      <a class="btn btn-dark" href="#book" id="goHourly" data-i18n="hr.btn">Price an hourly booking</a>
     </div>
     <div class="ideas">
-      <div><strong>Pattaya → Bangkok with a stop</strong><span>A floating market or outlet mall on the way</span></div>
-      <div><strong>Ayutthaya day trip</strong><span>From Bangkok, temples at your own pace</span></div>
-      <div><strong>Business day in Bangkok</strong><span>Car waits outside between meetings</span></div>
-      <div><strong>Chiang Mai mountains</strong><span>Doi Suthep and the old city in one day</span></div>
+      <div><strong data-i18n="id.1t">Pattaya → Bangkok with a stop</strong><span data-i18n="id.1d">A floating market or outlet mall on the way</span></div>
+      <div><strong data-i18n="id.2t">Ayutthaya day trip</strong><span data-i18n="id.2d">From Bangkok, temples at your own pace</span></div>
+      <div><strong data-i18n="id.3t">Business day in Bangkok</strong><span data-i18n="id.3d">Car waits outside between meetings</span></div>
+      <div><strong data-i18n="id.4t">Chiang Mai mountains</strong><span data-i18n="id.4d">Doi Suthep and the old city in one day</span></div>
     </div>
   </div>
 </section>
 
 <section id="fleet" class="section alt" aria-labelledby="fleet-h">
   <div class="wrap">
-    <h2 id="fleet-h">From a Corolla to a 40-seat coach</h2>
-    <p class="muted big" style="margin-top:-12px;margin-bottom:24px">Everyday sedans, family vans, chauffeur-driven Mercedes and Alphards, and buses for groups and events.</p>
+    <h2 id="fleet-h" data-i18n="fl.t">From a Corolla to a 40-seat coach</h2>
+    <p class="muted big lead-under" data-i18n="fl.d">Everyday sedans, family vans, chauffeur-driven Mercedes and Alphards, and buses for groups and events.</p>
     <div class="fleet" id="fleetCards"></div>
   </div>
 </section>
 
 <section id="faq" class="section" aria-labelledby="faq-h">
   <div class="wrap narrow">
-    <h2 id="faq-h">Questions</h2>
-    <details><summary>What if my flight is late?</summary><p>We track your flight number. The driver adjusts to the real landing time, and you get 60 minutes of free waiting from touchdown.</p></details>
-    <details><summary>Where do I meet the driver at Suvarnabhumi?</summary><p>[Exact meeting point] — your driver also messages you on landing with where they're standing.</p></details>
-    <details><summary>Is the price per person?</summary><p>No. It's per car, for your group only. Tolls, fuel and parking are included.</p></details>
-    <details><summary>How do I pay?</summary><p>Yes. Pay the driver in Thai baht at the end of the ride, scan a Thai QR code, or pay by bank transfer. Card payments are coming soon.</p></details>
-    <details><summary>Can I cancel?</summary><p>Free cancellation up to 24 hours before pickup.</p></details>
+    <h2 id="faq-h" data-i18n="fq.t">Questions</h2>
+    <details><summary data-i18n="fq.1q">What if my flight is late?</summary><p data-i18n="fq.1a">We track your flight number. The driver adjusts to the real landing time, and you get 60 minutes of free waiting from touchdown.</p></details>
+    <details><summary data-i18n="fq.2q">Where do I meet the driver at Suvarnabhumi?</summary><p data-i18n="fq.2a">[Exact meeting point] — your driver also messages you on landing with where they're standing.</p></details>
+    <details><summary data-i18n="fq.3q">Is the price per person?</summary><p data-i18n="fq.3a">No. It's per car, for your group only. Tolls, fuel and parking are included.</p></details>
+    <details><summary data-i18n="fq.4q">How do I pay?</summary><p data-i18n="fq.4a">Pay the driver in Thai baht at the end of the ride, scan a Thai QR code, or pay by bank transfer. Card payments are coming soon.</p></details>
+    <details><summary data-i18n="fq.5q">Can I cancel?</summary><p data-i18n="fq.5a">Free cancellation up to 24 hours before pickup.</p></details>
   </div>
 </section>
 </main>
 
 <footer class="footer">
   <div class="wrap footer-row">
-    <div><div class="logo-text">ThaiDriverService.com</div>Private drivers across Thailand</div>
-    <div class="contact"><strong>24/7 help</strong><a id="waFooter" href="#">WhatsApp</a><a id="lineFooter" href="#">LINE</a></div>
+    <div><div class="logo-text">ThaiDriverService.com</div><span data-i18n="ff.tag">Private drivers across Thailand</span></div>
+    <div class="contact"><strong data-i18n="ff.help">24/7 help</strong><a id="waFooter" href="#">WhatsApp</a><a id="mailFooter" href="#">Email</a><a id="lineFooter" href="#">LINE</a></div>
   </div>
 </footer>
 
-<script src="config.js"></script>
-<script src="app.js"></script>
+<div class="contact-bar" role="region" aria-label="Contact">
+  <span class="contact-bar-label" data-i18n="c.label">Book now</span>
+  <a id="fabWa" class="fab fab-wa" href="#" target="_blank" rel="noopener">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+    <span>WhatsApp</span></a>
+  <a id="fabLine" class="fab fab-line" href="#" target="_blank" rel="noopener">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="4"/><path d="M8 18v3l4-3"/></svg>
+    <span>LINE</span></a>
+</div>
+
+<script src="config.js?v=7"></script>
+<script src="i18n.js?v=7"></script>
+<script src="app.js?v=7"></script>
 </body>
 </html>

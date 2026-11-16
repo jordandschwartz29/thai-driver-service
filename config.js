@@ -2,21 +2,27 @@
 // Prices are in Thai baht, PER VEHICLE, one way, tolls/fuel/parking included.
 // Set a price to null to show "Quote" instead (used for minibus and coach).
 window.TDS_CONFIG = {
+  // Booking partner — all Call / WhatsApp / LINE buttons go here.
   // WhatsApp number in international format, digits only (no +, no leading 0)
-  whatsapp: "66984504690",
+  whatsapp: "66849425085",
+  phone: "+66849425085",          // used for the Call button
+  phoneDisplay: "084 942 5085",   // shown on the page
+  email: "iktech39.boonchuai@gmail.com",   // all email bookings go here
+  emailBcc: "jordan.d.schwartz@gmail.com", // BCC on every email booking
   // LINE Official Account ID, e.g. "@thaidriverservice" — leave "" to hide LINE links
-  lineId: "",
+  lineId: "supalak0849425085",
 
+  // kind: "std" = normal car, "lux" = chauffeur service, "grp" = group (price on request)
   vehicles: [
-    { id: "eco",    name: "Economy",       model: "Toyota Corolla Altis / Vios or similar", cap: "3 pax · 2 bags",  capLong: "Up to 3 passengers, 2 suitcases" },
-    { id: "sedan",  name: "Comfort Sedan", model: "Toyota Camry or similar",                cap: "3 pax · 3 bags",  capLong: "Up to 3 passengers, 3 suitcases" },
-    { id: "suv",    name: "SUV",           model: "Toyota Fortuner / Innova or similar",    cap: "4 pax · 4 bags",  capLong: "Up to 4 passengers, 4 suitcases" },
-    { id: "van",    name: "VIP Van",       model: "Toyota Commuter / Majesty or similar",   cap: "9 pax · 8 bags",  capLong: "Up to 9 passengers, 8 suitcases — families, golf bags" },
-    { id: "alph",   name: "Luxury MPV",    model: "Toyota Alphard or similar",              cap: "4 pax · 4 bags",  capLong: "Up to 4 passengers. Chauffeur service.", luxury: true },
-    { id: "eclass", name: "Executive",     model: "Mercedes-Benz E-Class or similar",       cap: "3 pax · 2 bags",  capLong: "Up to 3 passengers. Chauffeur service.", luxury: true },
-    { id: "sclass", name: "First Class",   model: "Mercedes-Benz S-Class / BMW 7 Series",   cap: "3 pax · 2 bags",  capLong: "Up to 3 passengers. Chauffeur service.", luxury: true },
-    { id: "mini",   name: "Minibus",       model: "20-seat minibus",                        cap: "Up to 20 pax",    capLong: "Groups up to 20 — price on request" },
-    { id: "coach",  name: "Tour Coach",    model: "40-seat VIP coach",                      cap: "Up to 40 pax",    capLong: "Groups up to 40 — price on request" }
+    { id: "eco",    model: "Toyota Corolla Altis / Vios", pax: 3,  bags: 2, kind: "std" },
+    { id: "sedan",  model: "Toyota Camry",                pax: 3,  bags: 3, kind: "std" },
+    { id: "suv",    model: "Toyota Fortuner / Innova",    pax: 4,  bags: 4, kind: "std" },
+    { id: "van",    model: "Toyota Commuter / Majesty",   pax: 9,  bags: 8, kind: "std" },
+    { id: "alph",   model: "Toyota Alphard",              pax: 4,  bags: 4, kind: "lux" },
+    { id: "eclass", model: "Mercedes-Benz E-Class",       pax: 3,  bags: 2, kind: "lux" },
+    { id: "sclass", model: "Mercedes-Benz S-Class / BMW 7 Series", pax: 3, bags: 2, kind: "lux" },
+    { id: "mini",   model: "20-seat minibus",             pax: 20, bags: 20, kind: "grp" },
+    { id: "coach",  model: "40-seat VIP coach",           pax: 40, bags: 40, kind: "grp" }
   ],
 
   //               eco    sedan  suv    van    alph   eclass sclass  mini  coach

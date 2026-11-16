@@ -89,3 +89,25 @@ details p{margin:10px 0 0;color:var(--muted)}
 .contact{display:flex;flex-direction:column;gap:6px}.contact strong{color:#fff}.contact a{color:#C9D2DE}
 @media (max-width:520px){.vehicles{grid-template-columns:1fr}.ideas{grid-template-columns:1fr}.nav-links{gap:14px}}
 .tag{display:inline-block;vertical-align:middle;margin-left:8px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;background:var(--ink);color:var(--accent);padding:3px 8px;border-radius:999px}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.lang{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 10px;border:1px solid var(--ink2);border-radius:10px;color:#fff;cursor:pointer}
+.lang select{min-height:0;width:auto;padding:0;border:0;background:transparent;color:#fff;font:inherit;font-size:14px;cursor:pointer}
+.lang select option{color:var(--ink)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.lead-under{margin-top:-12px;margin-bottom:24px}
+body{font-family:Inter,"Noto Sans Thai","Hiragino Sans","Noto Sans JP","PingFang SC","Noto Sans SC",system-ui,sans-serif}
+
+.contact-bar{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.contact-bar-label{display:none}
+.fab{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 24px rgba(15,28,46,.25)}
+.fab[hidden]{display:none}
+.fab-call{background:var(--accent);color:var(--ink)}
+.fab-wa{background:#1A7F4B;color:#fff}
+.fab-line{background:#05873C;color:#fff}
+.fab:hover{filter:brightness(1.07)}
+@media (max-width:700px){
+  .contact-bar{left:0;right:0;bottom:0;flex-direction:row;gap:0;background:var(--ink);padding:8px 8px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -6px 20px rgba(0,0,0,.25)}
+  .contact-bar .fab{flex:1;border-radius:10px;margin:0 4px;box-shadow:none;padding:0 8px}
+  body{padding-bottom:72px}
+}
+.line-note{color:#05873C;font-weight:600}
